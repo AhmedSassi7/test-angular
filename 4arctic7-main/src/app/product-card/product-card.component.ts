@@ -1,5 +1,6 @@
 import { AfterViewChecked, AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Product } from '../model/product';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-card',
@@ -27,7 +28,7 @@ export class ProductCardComponent implements OnInit ,OnChanges {
     console.log("this child")
   }
 
-  constructor() { }
+  constructor(private service:ProductService) { }
  
   ngOnChanges(changes: SimpleChanges): void {
  console.log(changes)
@@ -35,6 +36,11 @@ export class ProductCardComponent implements OnInit ,OnChanges {
  
 
   ngOnInit(): void {
+  }
+    delete(id:number){
+    this.service.delete(id).subscribe((d:any)=>{
+      console.log(d)
+     } )
   }
 
 }
