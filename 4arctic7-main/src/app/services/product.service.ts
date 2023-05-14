@@ -25,4 +25,7 @@ export class ProductService {
   Update(id:number,product:Product):Observable<Product>{
     return this.http.put<Product>('http://localhost:3000/products'+'/'+id,product)
   }
+  delete(id:number):Observable<void>{
+    return this.http.delete<void>('http://localhost:3000/todos'+'/'+id)
+   }
 }
